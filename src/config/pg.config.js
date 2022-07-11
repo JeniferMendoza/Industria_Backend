@@ -16,7 +16,7 @@ const pg = new Pool({
 })
 
 
-
+/*
 console.log({ 1:process.env.USERBD,
     2:process.env.HOSTDB,
     3:process.env.NAMEBD,
@@ -25,6 +25,6 @@ console.log({ 1:process.env.USERBD,
 
 
 
-
+*/
 
 module.exports ={pg}

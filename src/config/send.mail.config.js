@@ -1,8 +1,8 @@
 const nodemailer = require("nodemailer");
 
 
-//const urlBase ='http://localhost:4200';
-const urlBase ='https://app-frontendingenieria.herokuapp.com';
+const urlBase ='http://localhost:3000';
+//const urlBase ='https://app-frontendingenieria.herokuapp.com';
 
 const mail ={
     user:'pruebas.mrcoffee@hotmail.com',
@@ -104,7 +104,7 @@ const sendEmailPublicidadHTML = async (email,subject,html)=>{
           <div class="container" id="email_content">
           <h2>Hola ${name}</h2>
       <p>Para confirmar tu cuenta , ingresa al siguiente enlace</p>
-      <a href="${urlBase}/confirmarCuenta/${token}"> confirmar cuenta </a>
+      <a href="${urlBase}/verifyUser/${token}"> confirmar cuenta </a>
       
           </div>
           

@@ -6,16 +6,16 @@ const storage = multer.diskStorage({
     cb(null,path.join( __dirname,'..','public','uploads'));
   },
   filename: (req,file,cb)=>{
-    cb(null,file.originalname+'-'+ Date.now());//+'-'+ Date.now() 
+    cb(null,+ Date.now()+'_'+file.originalname);//+'-'+ Date.now() 
   }
 });
 
-const cargarArchivo = multer({
+const loadFile = multer({
   storage : storage
 }); //<--nombre del imput imagen
 
 
 module.exports = {
 
-    cargarArchivo
+  loadFile
 };

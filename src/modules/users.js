@@ -4,7 +4,6 @@ const {pg} = require('../config/pg.config');
 
 const {getToken,getTokenData} = require('../config/jwt.config')
 const {getVerifyTemplate,sendEmailVerify} = require('../config/send.mail.config');
-const { query } = require('express');
 
 
 const newUser = async (req,res)=>{
@@ -46,19 +45,19 @@ const updateImageUser = async (req, res,next) => {
   const img=  fs.readFileSync(path.join( __dirname,'..','public','uploads',imagen.filename));
 
   pg.connect((err, client, release) => {
-  let query = 'INSERT INTO imagen(perfilImagen,contentType) VALUES ($1,$2)';
-  let values= [img,imagen.mimetype]
+  let query = 'INSERT INTO imagen(perfilImagen,contentType) VALUES ($1,$2) RETURNING id;';
+  let values= [img,imagen.mimetype];
   
   client.query(query, values, (err, res) => {
     if (err) {
      // console.log(err.stack)
     } else {
-     // console.log(res)
-     res.send('ya wey')
+      console.log(res.rows[0].id)
+
      release()
     }
   })
-
+  res.send('ya wey')
  fs.unlinkSync((path.join( __dirname,'..','public','uploads',imagen.filename)));
   })
   

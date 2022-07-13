@@ -104,7 +104,7 @@ const sendEmailPublicidadHTML = async (email,subject,html)=>{
           <div class="container" id="email_content">
           <h2>Hola ${name}</h2>
       <p>Para confirmar tu cuenta , ingresa al siguiente enlace</p>
-      <a href="${urlBase}/verifyUser/${token}"> confirmar cuenta </a>
+      <a href="${urlBase}/verificarUsuario/${token}"> confirmar cuenta </a>
       
           </div>
           
@@ -127,7 +127,7 @@ const sendEmailPublicidadHTML = async (email,subject,html)=>{
         <div class="container" id="email_content">
         <h2>Buen Día ${name}</h2>
     <p>Para cambiar su contraseña, por favor ingrese al siguiente enlace</p>
-    <a href="${urlBase}/resetPasswordForm/${token}"> cambiar contraseña </a>
+    <a href="${urlBase}/nuevaContraseniaForm/${token}"> cambiar contraseña </a>
     
         </div>
         

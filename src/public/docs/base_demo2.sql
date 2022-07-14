@@ -343,3 +343,31 @@ INSERT INTO paises (id,iso3166a1,iso3166a2,nombre)  VALUES (237, 'YE', 'YEM', 'Y
 INSERT INTO paises (id,iso3166a1,iso3166a2,nombre)  VALUES (238, 'DJ', 'DJI', 'Yibuti');
 INSERT INTO paises (id,iso3166a1,iso3166a2,nombre)  VALUES (239, 'ZM', 'ZMB', 'Zambia');
 INSERT INTO paises (id,iso3166a1,iso3166a2,nombre)  VALUES (240, 'ZW', 'ZWE', 'Zimbabue');
+
+CREATE TABLE IF NOT EXISTS TeamWork (
+  id INTEGER PRIMARY KEY,
+  nombre varchar(100) NOT NULL,
+  depto INTEGER NOT NULL REFERENCES deptoempresa(id) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Proyectos (
+  id INTEGER PRIMARY KEY,
+  nombre varchar(100) NOT NULL,
+  teamwork INTEGER NOT NULL REFERENCES teamwork(id) NOT NULL,
+  descripcion VARCHAR(300) NOT NULL,
+  inicio DATE NOT NULL,
+  finalizacion DATE NOT NULL,
+  Estado VARCHAR(20) DEFAULT 'POR INICIAR' NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Task (
+  id INTEGER PRIMARY KEY,
+  nombre varchar(100) NOT NULL,
+  proyecto INTEGER NOT NULL REFERENCES Proyectos(id) NOT NULL,
+  empleado INTEGER NOT NULL REFERENCES empleados(id) NOT NULL,
+  descripcion VARCHAR(300) NOT NULL,
+  inicio DATE NOT NULL,
+  finalizacion DATE NOT NULL,
+  Estado VARCHAR(20) DEFAULT 'POR INICIAR' NOT NULL,
+  Observacion VARCHAR(200)
+);
